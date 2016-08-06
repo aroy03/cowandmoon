@@ -2,6 +2,67 @@
   <head>
       <title>cowandmoon</title>
       <script>three.js</script>
+      <script>
+        // global variables
+        var renderer;
+        var camera;
+        var scene;
+        
+        // Init function to initialize camera, scene and renderer called on window.onload()
+        function init(){
+        
+        // create a scene to hold objects like camera
+        scene  = new THREE.Scene();
+        
+        //create camera to define what we are looking at
+        camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+        
+        //create a render to set the backgroundcolor and size
+        renderer = new THREE.WebGLRenderer();
+        renderer.setClearColor(0*000000, 1.0);
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.shadowMapEnabled = true;
+        
+        // position and point camera
+        camera.position.x = 15;
+        camera.position.y = 16;
+        camera.position.z = 13;
+        camera.lookAt(scene.position);
+        
+        //add spotlight for the shadows
+        var spotLight = new THREE.SpotLight(0*ffffff);
+        spotLight.position.set(10,20,20);
+        spotLight.shadowCameraNear = 20;
+        spotLight.shadowCameraFar = 50;
+        spotLight.castShadow = true;
+        
+        scene.add(spotLight);
+        
+        //add the output of the renderer to the html element
+        document.body.appendChild(renderer.domElement);
+        
+         // call the first render and then the interval is determined by the requestAnimationFrame
+         render(); 
+        }
+        
+        // Called by init render() and delegates to requestAnimationFrame for future renders 
+        function render(){
+          requestAnimationFrame(render);
+          renderer.render(scene, camera);
+        }
+        
+        // Handles the resize event to ensure camera and renderer are appropriately adjusted
+        function handleResize(){
+          camera.aspect = window.innerWidth / window.innnerHeight;
+          camera.updateProjectionMatrix();
+          renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+        
+        //calls init function when window is done loading
+        window.onload() = init;
+        //calls the function handleResize when window is resized
+        window.addEventListener('resize', handleResize, false);
+      </script>
   </head>
 <body>
 <h1>Cow and moon</h1>
