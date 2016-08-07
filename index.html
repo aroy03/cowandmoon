@@ -23,6 +23,20 @@
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.shadowMapEnabled = true;
         
+        // create the ground plane
+        var planeGeometry = new THREE.PlaneGeometry(20,20);
+        var planeMaterial = new THREE.MeshLambertMaterial({color: 0x cccccc});
+        var plane = new THREE.Mesh(planeGeometry, planeMaterial);
+        plane.receiveShadow = true;
+        
+        //rotate and position plane
+        plane.rotation.x = -0.5 * Math.PI;
+        plane.position.x =0;
+        plane.position.y =-2;
+        plane.position.z =0;
+        
+        scne.add(plane);
+        
         // position and point camera
         camera.position.x = 15;
         camera.position.y = 16;
