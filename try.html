@@ -73,17 +73,16 @@
           renderer.render(scene, camera);
         }
         
-        // Handles the resize event to ensure camera and renderer are appropriately adjusted
-        function handleResize(){
-          camera.aspect = window.innerWidth / window.innnerHeight;
-          camera.updateProjectionMatrix();
-          renderer.setSize(window.innerWidth, window.innerHeight);
-        }
-        
-        //calls init function when window is done loading
-        window.onload = init;
-        //calls the function handleResize when window is resized
-        window.addEventListener('resize', handleResize, false);
+         function handleResize() {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    }
+
+    // calls the init function when the window is done loading.
+    window.onload = init;
+    // calls the handleResize function when the window is resized
+    window.addEventListener('resize', handleResize, false);
       </script>
   </head>
 <body>
