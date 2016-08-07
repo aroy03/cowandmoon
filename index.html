@@ -41,6 +41,8 @@
         var cubeGeometry = new THREE.BoxGeometry(6, 4, 6);
         var cubeMaterial = new THREE.MeshLambertMaterial({color: 'red'});
         var cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+        cube.rotation.x += 0.1;
+        cube.rotation.y += 0.1;
 
         cube.castShadow = true;
 
@@ -51,6 +53,8 @@
         camera.position.x = 15;
         camera.position.y = 16;
         camera.position.z = 13;
+        
+        
         camera.lookAt(scene.position);
         
         //add spotlight for the shadows
