@@ -37,6 +37,16 @@
         
         scene.add(plane);
         
+        // create a cube
+        var cubeGeometry = new THREE.BoxGeometry(6, 4, 6);
+        var cubeMaterial = new THREE.MeshLambertMaterial({color: 'red'});
+        var cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+
+        cube.castShadow = true;
+
+        // add the cube to the scene
+        scene.add(cube);
+        
         // position and point camera
         camera.position.x = 15;
         camera.position.y = 16;
