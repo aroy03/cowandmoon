@@ -1,0 +1,249 @@
+{
+	"sceneObjects": [
+		{
+			"type": "SceneObject",
+			"position": {
+				"x": -21,
+				"y": 8.5
+			},
+			"rotation": 0,
+			"behaviors": [],
+			"sprites": [
+				{
+					"type": "Sprite",
+					"animations": {},
+					"currentAnimation": "default",
+					"sortPoint": {
+						"x": 0,
+						"y": 0
+					},
+					"layer": 3,
+					"autoResize": false,
+					"visible": true,
+					"image": "landscape6.jpg",
+					"imageArea": {
+						"minX": 0,
+						"minY": 0,
+						"maxX": 1,
+						"maxY": 1
+					},
+					"alwaysDraw": false,
+					"name": "",
+					"drawModifiers": [],
+					"pixelShader": "",
+					"pixelShaderUniforms": null,
+					"properties": {},
+					"size": {
+						"x": 1280,
+						"y": 720
+					}
+				}
+			],
+			"spriteOffsets": [
+				{
+					"x": 0,
+					"y": 0,
+					"angle": 0
+				}
+			],
+			"alignment": {
+				"x": "center",
+				"y": "center"
+			},
+			"name": "background",
+			"isTemplate": false,
+			"path": "",
+			"addToScene": {
+				"autoListen": true,
+				"params": null
+			},
+			"properties": {
+				"direction": "right"
+			},
+			"functions": {
+				"onMouseDown": "function (data)\n{var gaia = wade.getSceneObject(\"actor\");\n\nconsole.log(\"Inside ----> onMouseDown\");\n\nif(gaia.getPosition().x > data.screenPosition.x){\n    console.log(\"Inside ----> onMouseDown\");\n    gaia.direction = \"left\";\n    gaia.getSprite().playAnimation(\"gaia_walkleft\");\n}\nelse{console.log(\"Inside ----> onMouseDown\");\n    gaia.direction = \"right\";\n    gaia.getSprite().playAnimation(\"gaia_walkright\");\n}\n\ngaia.moveTo(data.screenPosition.x, gaia.getPosition().y,200);\n}"
+			}
+		},
+		{
+			"type": "SceneObject",
+			"position": {
+				"x": -417.34000000000015,
+				"y": 172.08500000000004
+			},
+			"rotation": 0,
+			"behaviors": [],
+			"sprites": [
+				{
+					"type": "Sprite",
+					"animations": {
+						"gaia_left": {
+							"type": "Animation",
+							"name": "gaia_left",
+							"startFrame": 0,
+							"endFrame": 0,
+							"numCells": {
+								"x": 1,
+								"y": 1
+							},
+							"image": "gaia_Idle_side_left.png",
+							"speed": 20,
+							"looping": false,
+							"blending": false,
+							"playMode": "forward",
+							"autoResize": true,
+							"offset": {
+								"x": 0,
+								"y": 0
+							},
+							"stopped": false,
+							"properties": {}
+						},
+						"gaia_walkleft": {
+							"type": "Animation",
+							"name": "gaia_walkleft",
+							"startFrame": 0,
+							"endFrame": 7,
+							"numCells": {
+								"x": 4,
+								"y": 2
+							},
+							"image": "gaia_Walk_side_left.png",
+							"speed": 20,
+							"looping": true,
+							"blending": false,
+							"playMode": "forward",
+							"autoResize": true,
+							"offset": {
+								"x": 0,
+								"y": 0
+							},
+							"stopped": false,
+							"properties": {}
+						},
+						"gaia_walkright": {
+							"type": "Animation",
+							"name": "gaia_walkright",
+							"startFrame": 0,
+							"endFrame": 7,
+							"numCells": {
+								"x": 4,
+								"y": 2
+							},
+							"image": "gaia_Walk_side_right.png",
+							"speed": 20,
+							"looping": true,
+							"blending": false,
+							"playMode": "forward",
+							"autoResize": true,
+							"offset": {
+								"x": 0,
+								"y": 0
+							},
+							"stopped": false,
+							"properties": {}
+						},
+						"gaia_right": {
+							"type": "Animation",
+							"name": "gaia_right",
+							"startFrame": 0,
+							"endFrame": 0,
+							"numCells": {
+								"x": 1,
+								"y": 1
+							},
+							"image": "gaia_Idle_side_right.png",
+							"speed": 20,
+							"looping": false,
+							"blending": false,
+							"playMode": "forward",
+							"autoResize": true,
+							"offset": {
+								"x": 0,
+								"y": 0
+							},
+							"stopped": false,
+							"properties": {}
+						}
+					},
+					"currentAnimation": "default",
+					"sortPoint": {
+						"x": 0,
+						"y": 0
+					},
+					"layer": 1,
+					"autoResize": false,
+					"visible": true,
+					"image": "gaia_Idle_side_right.png",
+					"imageArea": {
+						"minX": 0,
+						"minY": 0,
+						"maxX": 1,
+						"maxY": 1
+					},
+					"alwaysDraw": false,
+					"name": "gaia_right",
+					"drawModifiers": [],
+					"pixelShader": "",
+					"pixelShaderUniforms": null,
+					"properties": {},
+					"size": {
+						"x": 47,
+						"y": 184.15157620340756
+					}
+				}
+			],
+			"spriteOffsets": [
+				{
+					"x": 0,
+					"y": 0,
+					"angle": 0
+				}
+			],
+			"alignment": {
+				"x": "center",
+				"y": "center"
+			},
+			"name": "actor",
+			"isTemplate": false,
+			"path": "",
+			"addToScene": {
+				"autoListen": true,
+				"params": null
+			},
+			"properties": {},
+			"functions": {
+				"onMoveComplete": "function (data)\n{if(this.direction == \"left\"){\n    \n    this.getSprite().playAnimation(\"gaia_left\");\n    \n}\nelse{\n    this.getSprite().playAnimation(\"gaia_right\");\n}\n}"
+			}
+		}
+	],
+	"paths": [],
+	"layers": [
+		null,
+		{
+			"scaleFactor": 1,
+			"translateFactor": 1,
+			"renderMode": "webgl",
+			"useQuadtree": true,
+			"resolutionFactor": 1
+		},
+		null,
+		{
+			"scaleFactor": 1,
+			"translateFactor": 1,
+			"renderMode": "webgl",
+			"useQuadtree": true,
+			"resolutionFactor": 1
+		}
+	],
+	"minScreenSize": {
+		"x": 0,
+		"y": 0
+	},
+	"maxScreenSize": {
+		"x": 1280,
+		"y": 720
+	},
+	"orientation": "none",
+	"windowMode": "full",
+	"defaultLayer": 1
+}
